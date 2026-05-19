@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Registration Form - AO Investments</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:wght@600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Mono',monospace;background:#F5F4EF;color:#18181A;font-size:13px;line-height:1.6;padding:1.5rem 1rem}
+.wrap{max-width:560px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.1)}
+.hdr{padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;background:#1A2A6C}
+.hdr-title{font-family:'Fraunces',serif;font-size:15px;font-weight:600;color:#fff}
+.hdr-sub{font-size:10px;color:rgba(255,255,255,.7)}
+.body{padding:1.5rem}
+.title{font-family:'Fraunces',serif;font-size:17px;font-weight:600;margin-bottom:.25rem}
+.sub{font-size:11px;color:#6A6A6F;margin-bottom:1.25rem;line-height:1.6}
+label{font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:#6A6A6F;display:block;margin-bottom:4px;margin-top:.875rem;font-weight:500}
+input,select{width:100%;padding:9px 12px;border:1.5px solid #ddd;border-radius:7px;font-family:'DM Mono',monospace;font-size:12px;color:#18181A;outline:none;background:#fff;transition:border .15s}
+input:focus,select:focus{border-color:#1D9E75;box-shadow:0 0 0 2px rgba(29,158,117,.12)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.full{grid-column:1/-1}
+.section{margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid #eee}
+.section-title{font-size:11px;font-weight:600;color:#18181A;margin-bottom:.5rem}
+.btn{width:100%;padding:14px;background:#1D9E75;color:#fff;border:none;border-radius:8px;font-family:'DM Mono',monospace;font-size:14px;cursor:pointer;margin-top:1.25rem;font-weight:500}
+.btn:hover{background:#085041}
+.btn:disabled{background:#aaa;cursor:not-allowed}
+.err{display:none;padding:.75rem 1rem;background:#FCEBEB;border-radius:7px;font-size:12px;color:#501313;margin-top:.875rem}
+.ok{display:none;padding:2.5rem 1.5rem;text-align:center}
+.ok-icon{font-size:52px;margin-bottom:1rem}
+.ok-title{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:#1D9E75;margin-bottom:.5rem}
+.ok-sub{font-size:12px;color:#6A6A6F;line-height:1.6}
+.ftr{padding:.875rem 1.5rem;background:#F5F4EF;border-top:1px solid rgba(0,0,0,.09);font-size:9.5px;color:#6A6A6F;text-align:center}
+@media(max-width:500px){.g2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hdr">
+    <div>
+      <div class="hdr-title">AO Investments</div>
+      <div class="hdr-sub">Human Resources &middot; Onboarding</div>
+    </div>
+  </div>
+  <div class="body" id="form-section">
+    <div class="title">Registration Form</div>
+    <p class="sub">Please complete all fields below with your personal and banking information to finalize your onboarding with AO Investments. All fields marked with * are required.</p>
+    <div class="g2">
+      <div class="full"><label>Full name *</label><input id="r-nombre" type="text" placeholder="Your full name"></div>
+      <div><label>ID / Document *</label><input id="r-doc" type="text" placeholder="Passport, ID..."></div>
+      <div><label>Date of birth *</label><input id="r-fn" type="date"></div>
+      <div><label>Email *</label><input id="r-email" type="email" placeholder="your@email.com"></div>
+      <div><label>Phone / WhatsApp *</label><input id="r-tel" type="tel" placeholder="+1 555..."></div>
+      <div class="full"><label>City / Country *</label><input id="r-ciudad" type="text" placeholder="Miami, USA"></div>
+      <div class="full"><label>Address</label><input id="r-dir" type="text" placeholder="Street, neighborhood..."></div>
+    </div>
+    <div class="section">
+      <div class="section-title">&#128179; Payment information</div>
+      <div class="g2">
+        <div><label>Preferred method *</label>
+          <select id="r-metodo">
+            <option value="">-- Select --</option>
+            <option value="Zelle">Zelle</option>
+            <option value="Bancolombia">Bancolombia</option>
+            <option value="PayPal">PayPal</option>
+          </select>
+        </div>
+        <div><label>Bank / Institution *</label><input id="r-banco" type="text" placeholder="Bank of America..."></div>
+        <div><label>Account / Email *</label><input id="r-cuenta" type="text" placeholder="Account number or email"></div>
+        <div><label>Account holder name *</label><input id="r-titular" type="text" placeholder="Name on account"></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">&#9997; Electronic signature</div>
+      <label>Type your full name as signature *</label>
+      <input id="r-firma" type="text" placeholder="Your full name" style="font-family:Georgia,serif;font-style:italic;font-size:15px">
+    </div>
+    <div id="r-err" class="err"></div>
+    <button class="btn" onclick="enviar()">&#10003; Submit registration</button>
+  </div>
+  <div class="ok" id="ok-section">
+    <div class="ok-icon">&#9989;</div>
+    <div class="ok-title">Registration complete!</div>
+    <p class="ok-sub">Your information has been successfully submitted to the HR team at AO Investments.<br>We will be in touch shortly.</p>
+  </div>
+  <div class="ftr">AO Investments &middot; Human Resources &middot; Tlf: 04121237130</div>
+</div>
+<script>
+var SB_URL='https://bbsynbigouzitbjxaqdh.supabase.co';
+var SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJic3luYmlnb3V6aXRianhhcWRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NzkyMjcsImV4cCI6MjA5NDI1NTIyN30.Hg0bvxnQq2IOOhPhRxolTAHRldideYSiEBVmYgk1LgU';
+var ADMIN='theorgint@gmail.com';
+var RESEND=SB_URL+'/functions/v1/resend-email';
+
+// Pre-fill from URL params
+(function(){
+  var p=new URLSearchParams(window.location.search);
+  if(p.get('nombre')) document.getElementById('r-nombre').value=p.get('nombre');
+  if(p.get('email'))  document.getElementById('r-email').value=p.get('email');
+})();
+
+function enviar(){
+  var err=document.getElementById('r-err'); err.style.display='none';
+  var nombre=document.getElementById('r-nombre').value.trim();
+  var doc=document.getElementById('r-doc').value.trim();
+  var fn=document.getElementById('r-fn').value;
+  var email=document.getElementById('r-email').value.trim();
+  var tel=document.getElementById('r-tel').value.trim();
+  var ciudad=document.getElementById('r-ciudad').value.trim();
+  var metodo=document.getElementById('r-metodo').value;
+  var banco=document.getElementById('r-banco').value.trim();
+  var cuenta=document.getElementById('r-cuenta').value.trim();
+  var titular=document.getElementById('r-titular').value.trim();
+  var firma=document.getElementById('r-firma').value.trim();
+  if(!nombre||!doc||!fn||!email||!tel||!ciudad||!metodo||!banco||!cuenta||!titular||!firma){
+    err.textContent='Please complete all required fields (*)';
+    err.style.display='block'; return;
+  }
+  var btn=document.querySelector('.btn');
+  btn.disabled=true; btn.textContent='Sending...';
+  fetch(SB_URL+'/rest/v1/registros_va',{
+    method:'POST',
+    headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+    body:JSON.stringify({nombre:nombre,documento:doc,fecha_nacimiento:fn,email:email,telefono:tel,
+      ciudad:ciudad,direccion:document.getElementById('r-dir').value.trim(),
+      metodo_pago:metodo,banco:banco,cuenta:cuenta,titular:titular,
+      firma:firma,fecha_registro:new Date().toISOString(),empresa:'AO Investments'})
+  }).catch(function(e){console.warn('DB:',e);});
+  var info='New VA registered:\n\nName: '+nombre+'\nDoc: '+doc+'\nEmail: '+email+'\nPhone: '+tel+'\nCity: '+ciudad+'\nPayment: '+metodo+'\nBank: '+banco+'\nAccount: '+cuenta+'\nHolder: '+titular+'\nSignature: '+firma+'\nDate: '+new Date().toLocaleDateString();
+  fetch(RESEND,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+SB_KEY},
+    body:JSON.stringify({to:ADMIN,subject:'New VA registered: '+nombre,
+      html:'<h2 style="color:#1A2A6C">New VA Registration</h2><pre style="background:#f5f5f5;padding:1rem;border-radius:6px;font-size:13px;line-height:1.7">'+info+'</pre>'})
+  }).catch(function(e){console.warn('Email:',e);});
+  document.getElementById('form-section').style.display='none';
+  document.getElementById('ok-section').style.display='block';
+}
+</script>
+</body>
+</html>
