@@ -180,7 +180,7 @@ async function enviar(){
       direccion_va:document.getElementById('r-dir').value.trim(),
 firma_va:firma,foto_personal:fotoUrl,foto_doc:cedulaUrl,
 empresa_va:'The Org International',
-      fecha_registro:new Date().toISOString(),empresa:'The Org International'})
+      fecha_registro:new Date().toISOString()})
   }).catch(function(e){console.warn('DB:',e);});
   var info='<b>Name:</b> '+nombre+'<br><b>Doc:</b> '+doc+'<br><b>DOB:</b> '+fn+
     '<br><b>Email:</b> '+email+'<br><b>Phone:</b> '+tel+'<br><b>City:</b> '+ciudad+
