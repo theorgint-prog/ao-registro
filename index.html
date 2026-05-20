@@ -176,11 +176,10 @@ async function enviar(){
     method:'POST',
     headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
     body:JSON.stringify({nombre:nombre,documento:doc,fecha_nacimiento:fn,email:email,telefono:tel,
-     ciudad:ciudad,
-      direccion_va:document.getElementById('r-dir').value.trim(),
-firma_va:firma,foto_personal:fotoUrl,foto_doc:cedulaUrl,
-empresa_va:'The Org International',
-      fecha_registro:new Date().toISOString()})
+  ciudad:ciudad,
+  direccion_va:document.getElementById('r-dir').value.trim(),
+  firma_va:firma,foto_personal:fotoUrl,foto_doc:cedulaUrl,
+  fecha_registro:new Date().toISOString()})
   }).catch(function(e){console.warn('DB:',e);});
   var info='<b>Name:</b> '+nombre+'<br><b>Doc:</b> '+doc+'<br><b>DOB:</b> '+fn+
     '<br><b>Email:</b> '+email+'<br><b>Phone:</b> '+tel+'<br><b>City:</b> '+ciudad+
