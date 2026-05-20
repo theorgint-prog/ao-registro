@@ -114,7 +114,7 @@ var SB_URL='https://bbsynbigouzitbjxaqdh.supabase.co';
 var SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJic3luYmlnb3V6aXRianhhcWRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NzkyMjcsImV4cCI6MjA5NDI1NTIyN30.Hg0bvxnQq2IOOhPhRxolTAHRldideYSiEBVmYgk1LgU';
 var ADMIN='theorgint@gmail.com';
 var RESEND=SB_URL+'/functions/v1/resend-email';
-var IMGBB='77186d72e00412ef53fd92c781b4a0e4';
+var IMGBB='1b1efef056c016b6c182f1c3b715daca';
 (function(){
   var p=new URLSearchParams(window.location.search);
   if(p.get('nombre')) document.getElementById('r-nombre').value=p.get('nombre');
@@ -176,10 +176,9 @@ async function enviar(){
     method:'POST',
     headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
     body:JSON.stringify({nombre:nombre,documento:doc,fecha_nacimiento:fn,email:email,telefono:tel,
-  ciudad:ciudad,
-  direccion_va:document.getElementById('r-dir').value.trim(),
-  firma_va:firma,foto_personal:fotoUrl,foto_doc:cedulaUrl,
-  fecha_registro:new Date().toISOString()})
+      ciudad:ciudad,direccion_va:document.getElementById('r-dir').value.trim(),
+      firma_va:firma,foto_personal:fotoUrl,foto_doc:cedulaUrl,
+      fecha_registro:new Date().toISOString()})
   }).catch(function(e){console.warn('DB:',e);});
   var info='<b>Name:</b> '+nombre+'<br><b>Doc:</b> '+doc+'<br><b>DOB:</b> '+fn+
     '<br><b>Email:</b> '+email+'<br><b>Phone:</b> '+tel+'<br><b>City:</b> '+ciudad+
