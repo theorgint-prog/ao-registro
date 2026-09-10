@@ -30,7 +30,7 @@
     .split('__COMPANY__').join(clean(empresa))
     .split('__GREETING__').join(clean(greeting))
     .split('__TODAY__').join(today);
-  document.open(); document.write(html); document.close();
+  var __msg=document.getElementById('msg'); if(__msg){__msg.style.display='none';} document.open(); document.write(html); document.close();
 })();
 </script>
 </body></html>
